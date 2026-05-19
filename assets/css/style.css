@@ -1538,6 +1538,212 @@ label.srs-toggle {
     font-size: var(--text-s) !important;
 }
 
+.about-profile {
+    align-items: center;
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: auto 1fr;
+    margin-bottom: 1.5rem;
+}
+
+.about-profile-photo {
+    align-items: center;
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, rgba(35, 128, 237, 0.12), rgba(35, 128, 237, 0.22));
+    border: 1px solid var(--color-border-light);
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    overflow: hidden;
+    text-decoration: none;
+    width: clamp(5.5rem, 14vw, 8rem);
+}
+
+.about-profile-photo img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.about-profile-photo span {
+    color: #2380ED;
+    font-family: 'Space Grotesk', 'IBM Plex Sans', sans-serif;
+    font-size: var(--text-xl);
+    font-weight: 700;
+}
+
+.about-profile-name {
+    font-size: var(--text-xl);
+    font-weight: var(--text-weight-bold);
+    padding: 0 0 0.25rem;
+}
+
+.about-profile-role {
+    color: var(--color-text-sub);
+    font-size: var(--text-m);
+    margin: 0;
+}
+
+.about-migration {
+    display: grid;
+    gap: 1rem;
+    margin-top: 2.25rem;
+}
+
+.about-migration h3 {
+    color: var(--color-text-sub);
+    font-size: var(--text-xs);
+    font-weight: var(--text-weight-bold);
+    padding: 0 0 0.65rem;
+    text-transform: uppercase;
+}
+
+.about-migration-map {
+    background: var(--color-bg-sub);
+    border: 1px solid var(--color-border-light);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.about-world-map-svg {
+    display: block;
+    height: auto;
+    width: 100%;
+}
+
+.about-world-land {
+    fill: rgba(35, 128, 237, 0.12);
+    stroke: none;
+}
+
+.about-map-route {
+    fill: none;
+    stroke: #2380ED;
+    stroke-dasharray: 8 8;
+    stroke-linecap: round;
+    stroke-width: 4;
+}
+
+.about-map-route-glow {
+    fill: none;
+    opacity: 0.16;
+    stroke: #2380ED;
+    stroke-linecap: round;
+    stroke-width: 12;
+}
+
+.about-map-arrow {
+    fill: #2380ED;
+}
+
+.about-map-point {
+    align-items: center;
+    background: var(--color-bg-main);
+    border: 1px solid #2380ED;
+    border-radius: 999px;
+    color: var(--color-text-main);
+    cursor: pointer;
+    display: inline-flex;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: var(--text-xs);
+    font-weight: var(--text-weight-bold);
+    left: var(--x);
+    line-height: 1;
+    min-height: 1.7rem;
+    padding: 0.35rem 0.55rem;
+    position: absolute;
+    top: var(--y);
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+}
+
+.about-map-point::before {
+    background: #2380ED;
+    border: 2px solid var(--color-bg-main);
+    border-radius: 50%;
+    content: "";
+    height: 0.55rem;
+    left: 50%;
+    position: absolute;
+    top: calc(100% + 0.12rem);
+    transform: translateX(-50%);
+    width: 0.55rem;
+}
+
+.about-map-point:hover,
+.about-map-point.is-active {
+    background: #2380ED;
+    color: #FFFFFF;
+}
+
+.about-map-detail {
+    border: 1px solid var(--color-border-light);
+    border-radius: 0.5rem;
+    display: grid;
+    gap: 0.2rem;
+    padding: 1rem;
+}
+
+.about-map-detail strong {
+    color: var(--color-text-main);
+    font-size: var(--text-m);
+}
+
+.about-map-detail span {
+    color: #2380ED;
+    font-size: var(--text-s);
+    font-weight: var(--text-weight-bold);
+}
+
+.about-map-detail p {
+    color: var(--color-text-sub);
+    font-size: var(--text-s);
+    margin: 0;
+}
+
+.about-place-list {
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.about-place-list div {
+    border-left: 2px solid var(--color-border-light);
+    padding-left: 0.75rem;
+}
+
+.about-place-list span {
+    color: var(--color-text-main);
+    display: block;
+    font-size: var(--text-s);
+    font-weight: var(--text-weight-bold);
+}
+
+.about-place-list p {
+    color: var(--color-text-sub);
+    font-size: var(--text-s);
+    margin: 0.15rem 0 0;
+}
+
+.about-place-list p strong {
+    color: var(--color-text-main);
+}
+
+/* Legacy map pin styles kept for older generated previews. */
+.about-map-pin circle {
+    fill: #2380ED;
+    stroke: var(--color-bg-main);
+    stroke-width: 3;
+}
+
+.about-map-pin text {
+    fill: var(--color-text-main);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+}
+
 li {
     padding-bottom: var(--padding-thin);
 }
@@ -1629,5 +1835,19 @@ a[href^="http"] {
 
     .home-image {
         padding-top: 2rem;
+    }
+
+    .about-profile {
+        grid-template-columns: 1fr;
+    }
+
+    .about-map-point {
+        font-size: 0.56rem;
+        min-height: 1.35rem;
+        padding: 0.25rem 0.35rem;
+    }
+
+    .about-place-list {
+        grid-template-columns: 1fr;
     }
 }
