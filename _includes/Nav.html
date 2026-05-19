@@ -31,17 +31,16 @@
 
 <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" style="padding-left: 0;"; href="{{ site.baseurl }}/index.html">
-          <h6> {{site.heading}}</h6></a>
-          <script src="{{ site.baseurl }}/assets/js/modeswitcher.js"></script>
-          <script src="{{ site.baseurl }}/assets/js/Hamburger.js"></script>
-      <div class="navbar-item navbar-dark-mode__mobile is-hidden-tablet" onclick="modeSwitcher()">
+      <a class="navbar-item" style="padding-left: 0;" href="{{ '/' | relative_url }}">
+          <h6>{{ site.heading }}</h6>
+      </a>
+      <div class="navbar-item navbar-dark-mode__mobile is-hidden-tablet">
         <div class="buttons">
-          <a class="button is-text">
+          <button class="button is-text" type="button" data-theme-toggle aria-label="Toggle color theme">
             <span class="icon is-small">
               <img src="{{ '/assets/img/moon.svg' | relative_url }}" id="theme-toggle-img--mobile">
             </span>
-          </a>
+          </button>
         </div>
       </div>
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -56,26 +55,28 @@
         <a href="{{'/notes' | relative_url}}" class="navbar-item">
           Blog
         </a>
-        <a href="../post/about" class="navbar-item">
+        <a href="{{ '/post/about' | relative_url }}" class="navbar-item">
           About
         </a>
-        <a href="https://github.com/adotzh" target="_blank" class="navbar-item">
+        <a href="https://github.com/adotzh" target="_blank" rel="noopener noreferrer" class="navbar-item">
           Github
         </a>
-        <a href="https://www.linkedin.com/in/azhiboedova/" target="_blank" class="navbar-item">
+        <a href="https://www.linkedin.com/in/azhiboedova/" target="_blank" rel="noopener noreferrer" class="navbar-item">
           LinkedIn
         </a>
       </div>
-      <div class="navbar-end is-hidden-mobile" onclick="modeSwitcher()" >
+      <div class="navbar-end is-hidden-mobile">
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-text">
+            <button class="button is-text" type="button" data-theme-toggle aria-label="Toggle color theme">
               <span class="icon is-small">
                 <img src="{{ '/assets/img/moon.svg' | relative_url }}" id="theme-toggle-img">
               </span>
-            </a>
+            </button>
           </div>
         </div>
       </div>
     </div>
+    <script src="{{ site.baseurl }}/assets/js/modeswitcher.js"></script>
+    <script src="{{ site.baseurl }}/assets/js/Hamburger.js"></script>
   </nav>

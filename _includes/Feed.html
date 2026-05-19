@@ -44,14 +44,14 @@
     {%- endif -%}
     <!-- feed with filter-->
     <div class="related-wrapper">
-    {% assign note_items = site.notes | sort: "date" | reverse %}
-    {% for note_items in note_items %}
-        {%- if note_items.feed == "show" -%}
+    {% assign notes = site.notes | sort: "date" | reverse %}
+    {% for note in notes %}
+        {%- if note.feed == "show" -%}
                 <div class="notelist-feed">
-                    <a href="{{ site.baseurl }}{{note_items.url}}">
-                        <h6>{{ note_items.title }}</h6>
+                    <a href="{{ note.url | relative_url }}">
+                        <h6>{{ note.title }}</h6>
                         <p class="excerpt">
-                            {{ note_items.content | strip_html | strip | remove: "[[" | remove: "]]" | remove: "-" | escape | truncate: 200 }}
+                            {{ note.content | strip_html | strip | remove: "[[" | remove: "]]" | remove: "-" | escape | truncate: 200 }}
                         </p>
                     </a>
                 </div>
@@ -65,13 +65,13 @@
 
 {%- if page.feedformat == "row" -%}
 <div class="block">
-    {% assign note_items = site.notes | sort: "date" | reverse %}
-    {% for note_items in note_items %}
-        {%- if note_items.format == "list" -%}
+    {% assign notes = site.notes | sort: "date" | reverse %}
+    {% for note in notes %}
+        {%- if note.format == "list" -%}
             <div class="list-feed">
-                    <a href="{{ site.baseurl }}{{note_items.url}}" style="text-decoration: none;display: flex;justify-content: space-between;flex-direction: row;width: 100%;">
+                    <a href="{{ note.url | relative_url }}" style="text-decoration: none;display: flex;justify-content: space-between;flex-direction: row;width: 100%;">
                         <div class="writinglist-title">
-                            {{note_items.title }}
+                            {{ note.title }}
                         </div>
                     </a>
             </div>

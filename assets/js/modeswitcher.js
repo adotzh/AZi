@@ -7,7 +7,7 @@ https://github.com/derekkedziora/jekyll-demo
 Creative Commons Attribution 4.0 International License
 */
 
-let systemInitiatedDark = window.matchMedia("(prefers-color-scheme: dark)"); 
+let systemInitiatedDark = window.matchMedia("(prefers-color-scheme: dark)");
 let theme = sessionStorage.getItem('theme');
 
 const iconSun = "{{ site.baseurl }}/assets/img/sun.svg";
@@ -15,8 +15,12 @@ const iconMoon = "{{ site.baseurl }}/assets/img/moon.svg";
 
 
 function changeIconImgSrc(src) {
-	document.getElementById("theme-toggle-img").src = src;
-	document.getElementById("theme-toggle-img--mobile").src = src;
+	["theme-toggle-img", "theme-toggle-img--mobile"].forEach((id) => {
+		const icon = document.getElementById(id);
+		if (icon) {
+			icon.src = src;
+		}
+	});
 }
 
 if (systemInitiatedDark.matches) {
@@ -36,7 +40,11 @@ function prefersColorTest(systemInitiatedDark) {
     sessionStorage.setItem('theme', 'light');
   }
 }
-systemInitiatedDark.addListener(prefersColorTest);
+if (systemInitiatedDark.addEventListener) {
+	systemInitiatedDark.addEventListener("change", prefersColorTest);
+} else {
+	systemInitiatedDark.addListener(prefersColorTest);
+}
 
 
 function modeSwitcher() {
@@ -69,3 +77,9 @@ if (theme === "dark") {
 	sessionStorage.setItem('theme', 'light');
 	changeIconImgSrc(iconSun);
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+	document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+		button.addEventListener("click", modeSwitcher);
+	});
+});
