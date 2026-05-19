@@ -205,6 +205,21 @@ main {
     justify-content: flex-end;
 }
 
+.azi-nav-wordmark {
+    align-items: baseline;
+    display: inline-flex;
+    font-family: 'Space Grotesk', 'IBM Plex Sans', sans-serif;
+    font-size: var(--text-m);
+    font-weight: 700;
+    gap: 0.02em;
+    line-height: 1;
+    padding: var(--padding-thin) 0;
+}
+
+.azi-nav-wordmark span:nth-child(3) {
+    color: #2380ED;
+}
+
 @media screen and (min-width: 768px) {
     .buttons.for-back-home:not(:last-child) {}
 }
@@ -1539,6 +1554,29 @@ a[href^="http"] {
     color: var(--color-text-sub);
 }
 
+.azi-hero-wordmark {
+    align-items: baseline;
+    color: var(--color-text-main);
+    display: inline-flex;
+    font-family: 'Space Grotesk', 'IBM Plex Sans', sans-serif;
+    font-size: clamp(4.5rem, 12vw, 9rem);
+    font-weight: 700;
+    gap: 0.02em;
+    letter-spacing: 0;
+    line-height: 0.9;
+    position: relative;
+}
+
+.azi-hero-wordmark.azi-wordmark--primary {
+    background: linear-gradient(90deg, rgba(35, 128, 237, 0.08), rgba(35, 128, 237, 0.14));
+    border-radius: 0.08em;
+    padding: 0.02em 0.05em 0.08em;
+}
+
+.azi-hero-wordmark.azi-wordmark--primary > span:nth-child(3) {
+    color: #2380ED;
+}
+
 /*Home page links and decors*/
 
 .home-sub-text a {
@@ -1593,6 +1631,3 @@ a[href^="http"] {
         padding-top: 2rem;
     }
 }
-
-
-
