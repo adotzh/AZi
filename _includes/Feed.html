@@ -29,22 +29,22 @@
 *
 {%- endcomment -%}
 
-<!--Notes Feed-->
-<!--Static Page : pages/notes.md-->
+<!--Blog Feed-->
+<!--Static Page : pages/blog.md-->
 
 {%- if page.feedformat == "card" -%}
 <div class="feed-list">
-    {% assign notes = site.notes | sort: "date" | reverse %}
-    {% for note in notes %}
-        {%- if note.feed == "show" and note.take != true -%}
+    {% assign posts = site.posts | sort: "date" | reverse %}
+    {% for post in posts %}
+        {%- if post.feed == "show" and post.take != true -%}
         <div class="notelist-feed">
-            <a href="{{ note.url | relative_url }}">
+            <a href="{{ post.url | relative_url }}">
                 <div class="home-post-meta">
                     <span class="feed-type-post">Post</span>
-                    <time datetime="{{ note.date | date: '%Y-%m-%d' }}">{{ note.date | date: "%b %-d, %Y" }}</time>
+                    <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%b %-d, %Y" }}</time>
                 </div>
-                <h6>{{ note.title }}</h6>
-                <p class="excerpt">{{ note.content | strip_html | strip | remove: "[[" | remove: "]]" | remove: "-" | escape | truncate: 200 }}</p>
+                <h6>{{ post.title }}</h6>
+                <p class="excerpt">{{ post.content | strip_html | strip | remove: "[[" | remove: "]]" | remove: "-" | escape | truncate: 200 }}</p>
             </a>
         </div>
         {%- endif -%}
@@ -58,13 +58,13 @@
 
 {%- if page.feedformat == "row" -%}
 <div class="block">
-    {% assign notes = site.notes | sort: "date" | reverse %}
-    {% for note in notes %}
-        {%- if note.format == "list" -%}
+    {% assign posts = site.posts | sort: "date" | reverse %}
+    {% for post in posts %}
+        {%- if post.format == "list" -%}
             <div class="list-feed">
-                    <a href="{{ note.url | relative_url }}" style="text-decoration: none;display: flex;justify-content: space-between;flex-direction: row;width: 100%;">
+                    <a href="{{ post.url | relative_url }}" style="text-decoration: none;display: flex;justify-content: space-between;flex-direction: row;width: 100%;">
                         <div class="writinglist-title">
-                            {{ note.title }}
+                            {{ post.title }}
                         </div>
                     </a>
             </div>

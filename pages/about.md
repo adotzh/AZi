@@ -1,6 +1,8 @@
 ---
+layout: Post
 title: About Me
 permalink: /about-me
+content-type: static
 ---
 <div class="about-profile">
   <div class="about-profile-photo{% if site.linkedin.photo_url == nil or site.linkedin.photo_url == empty %} about-profile-photo--placeholder{% endif %}">

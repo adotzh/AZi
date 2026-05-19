@@ -1,8 +1,8 @@
-{% assign latest_notes = site.notes | sort: "date" | reverse %}
-{% assign latest_note = nil %}
-{% for note in latest_notes %}
-    {% if note.feed == "show" and latest_note == nil %}
-        {% assign latest_note = note %}
+{% assign latest_posts = site.posts | sort: "date" | reverse %}
+{% assign latest_post = nil %}
+{% for post in latest_posts %}
+    {% if post.feed == "show" and latest_post == nil %}
+        {% assign latest_post = post %}
     {% endif %}
 {% endfor %}
 
@@ -32,14 +32,14 @@
                 <span class="home-about-cta">Read the full story →</span>
             </div>
         </a>
-        {% if latest_note %}
-            <a class="home-post-card" href="{{ latest_note.url | relative_url }}">
+        {% if latest_post %}
+            <a class="home-post-card" href="{{ latest_post.url | relative_url }}">
                 <div class="home-post-meta">
                     <span>Latest post</span>
-                    <time datetime="{{ latest_note.date | date_to_xmlschema }}">{{ latest_note.date | date: "%b %-d, %Y" }}</time>
+                    <time datetime="{{ latest_post.date | date_to_xmlschema }}">{{ latest_post.date | date: "%b %-d, %Y" }}</time>
                 </div>
-                <h2>{{ latest_note.title }}</h2>
-                <p>{{ latest_note.content | strip_html | strip | remove: "[[" | remove: "]]" | remove: "-" | escape | truncate: 180 }}</p>
+                <h2>{{ latest_post.title }}</h2>
+                <p>{{ latest_post.content | strip_html | strip | remove: "[[" | remove: "]]" | remove: "-" | escape | truncate: 180 }}</p>
                 <span class="home-post-read">Read latest post →</span>
             </a>
         {% else %}

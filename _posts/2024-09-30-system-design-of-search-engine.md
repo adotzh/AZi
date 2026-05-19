@@ -1,7 +1,7 @@
 ---
 title: System Design of Search Engine
 feed: show
-date: 30-09-2024
+date: 2024-09-30
 permalink: /posts/system-design-of-search-engine
 ---
 

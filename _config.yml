@@ -70,7 +70,7 @@ plugins:
 ## Suggested collects are "notes" "lists" and "blog"
 collections:
     notes:
-      output: true
+      output: false
       permalink: /note/:title
 
 markdown: kramdown
@@ -91,7 +91,7 @@ defaults:
       type: posts
     values:
       layout: Post
-      permalink: /post/:title
+      permalink: /posts/:title
       content-type: post
   - scope:
       path: ""

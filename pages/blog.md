@@ -2,7 +2,7 @@
 layout: Post
 permalink: /blog
 feedformat: card
-title: Digital Garden
+title: Blog
 ---
 
 > "Your brain is for having ideas, not holding them."
