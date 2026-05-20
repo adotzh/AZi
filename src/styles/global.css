@@ -93,12 +93,6 @@ h3 {
   gap: 1.25rem;
 }
 
-.navbar-links a[target="_blank"]::after {
-  color: var(--color-text-sub);
-  content: "\2197";
-  font-size: 0.8em;
-  margin-left: 0.25rem;
-}
 
 .azi-nav-wordmark {
   align-items: baseline;
@@ -112,6 +106,18 @@ h3 {
 
 .azi-nav-wordmark span:nth-child(3) {
   color: #2380ed;
+}
+
+.nav-icon-link {
+  align-items: center;
+  color: var(--color-text-sub);
+  display: inline-flex;
+  opacity: 0.75;
+  transition: opacity 0.15s;
+}
+
+.nav-icon-link:hover {
+  opacity: 1;
 }
 
 .theme-toggle {
@@ -129,18 +135,8 @@ h3 {
 .theme-toggle img {
   height: 1.1rem;
   width: 1.1rem;
-  filter: brightness(0);
 }
 
-[data-theme="dark"] .theme-toggle img {
-  filter: invert(1);
-}
-
-@media (prefers-color-scheme: dark) {
-  html:not([data-theme="light"]) .theme-toggle img {
-    filter: invert(1);
-  }
-}
 
 .home-page {
   display: flex;
