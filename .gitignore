@@ -2,6 +2,9 @@ _site
 .jekyll-cache
 .bundle
 vendor/bundle
+node_modules
+dist
+.astro
 pages/.DS_Store
 pages/tags.md
 _notes/.obsidian

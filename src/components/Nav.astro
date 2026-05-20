@@ -1,0 +1,17 @@
+---
+import { site } from '../data/site';
+---
+<nav class="navbar" aria-label="Main navigation">
+  <a class="navbar-brand" href="/" aria-label="Home">
+    <span class="azi-nav-wordmark" aria-label="AZi"><span>A</span><span>Z</span><span>i</span></span>
+  </a>
+  <div class="navbar-links">
+    <a href="/blog">Blog</a>
+    <a href={site.links.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href={site.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href={site.links.twitter} target="_blank" rel="noopener noreferrer">Twitter</a>
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color theme">
+      <img src="/assets/img/moon.svg" alt="" data-theme-toggle-img />
+    </button>
+  </div>
+</nav>

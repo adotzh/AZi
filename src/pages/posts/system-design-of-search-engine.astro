@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { formatPostDate } from '../../data/format';
+import Post, { frontmatter } from '../../content/posts/system-design-of-search-engine.md';
+---
+<BaseLayout title={frontmatter.title} description="A system design note on modern web search engines.">
+  <article class="post-page">
+    <a class="back-link" href="/blog">Blog</a>
+    <h1>{frontmatter.title}</h1>
+    <time datetime={new Date(frontmatter.date).toISOString()}>{formatPostDate(frontmatter.date, { month: 'long' })}</time>
+    <div class="content">
+      <Post />
+    </div>
+  </article>
+</BaseLayout>

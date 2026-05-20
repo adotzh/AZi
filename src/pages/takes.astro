@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { takeCategories } from '../data/takes';
+---
+<BaseLayout title="Takes" description="A running catalog of recommendations and opinions.">
+  <div class="page-heading">
+    <a class="back-link" href="/">Home</a>
+    <h1>Takes</h1>
+    <p>A running catalog of opinions: things worth experiencing, worth skipping, and everything in between.</p>
+  </div>
+
+  <div class="takes-page">
+    {takeCategories.map((category) => (
+      <section class="takes-section" id={category.id}>
+        <p class="takes-section-label">{category.label}</p>
+        {category.items.length > 0 ? (
+          <div class="takes-grid">
+            {category.items.map((item) => (
+              <div class="home-rec-card">
+                <div class="home-rec-header">
+                  <span class="home-rec-type">{item.type}</span>
+                  <span class={`home-rec-rating home-rec-rating--${item.rating.toLowerCase()}`}>{item.rating}</span>
+                </div>
+                <strong>{item.title}</strong>
+                <p>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p class="empty-note">Coming later.</p>
+        )}
+      </section>
+    ))}
+  </div>
+</BaseLayout>

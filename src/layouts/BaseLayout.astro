@@ -1,0 +1,66 @@
+---
+import { site } from '../data/site';
+import Nav from '../components/Nav.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = site.title, description = site.description } = Astro.props;
+const pageTitle = title === site.title ? site.title : `${title} - ${site.title}`;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta property="og:site_name" content={site.author} />
+    <meta property="og:description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/assets/img/OGImg.png" />
+    <title>{pageTitle}</title>
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).toString()} />
+    <link rel="apple-touch-icon" href="/assets/img/favicon.png" />
+    <link rel="icon" href="/assets/img/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <Nav />
+      <section class="section">
+        <div class="page-column">
+          <slot />
+        </div>
+      </section>
+    </main>
+    <script is:inline>
+      const storageKey = 'theme-preference';
+      const getStoredTheme = () => localStorage.getItem(storageKey);
+      const getSystemTheme = () =>
+        window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      const applyTheme = (theme) => {
+        document.documentElement.dataset.theme = theme;
+        document.querySelectorAll('[data-theme-toggle-img]').forEach((img) => {
+          img.src = theme === 'dark' ? '/assets/img/sun.svg' : '/assets/img/moon.svg';
+        });
+      };
+      applyTheme(getStoredTheme() || getSystemTheme());
+      document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+          localStorage.setItem(storageKey, next);
+          applyTheme(next);
+        });
+      });
+    </script>
+  </body>
+</html>

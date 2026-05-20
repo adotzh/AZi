@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { formatPostDate } from '../data/format';
+import { frontmatter as post } from '../content/posts/system-design-of-search-engine.md';
+---
+<BaseLayout title="Blog" description="Posts on engineering, learning systems, and ideas.">
+  <div class="page-heading">
+    <a class="back-link" href="/">Home</a>
+    <h1>Blog</h1>
+    <p>"Your brain is for having ideas, not holding them." - David Allen</p>
+  </div>
+
+  <div class="feed-list">
+    <article class="notelist-feed">
+      <a href="/posts/system-design-of-search-engine">
+        <div class="home-post-meta">
+          <span class="feed-type-post">Post</span>
+          <time datetime={new Date(post.date).toISOString()}>{formatPostDate(post.date)}</time>
+        </div>
+        <h2>{post.title}</h2>
+        <p class="excerpt">
+          Search looks simple from the outside: type a query, get ten blue links. Under the hood it is one of the most interesting large-scale system design problems.
+        </p>
+      </a>
+    </article>
+  </div>
+</BaseLayout>

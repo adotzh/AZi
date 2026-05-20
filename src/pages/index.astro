@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AboutJourney from '../components/AboutJourney.astro';
+import { site } from '../data/site';
+import { takeCategories } from '../data/takes';
+import { formatPostDate } from '../data/format';
+import { frontmatter as latestPost } from '../content/posts/system-design-of-search-engine.md';
+
+const consume = takeCategories.find((category) => category.id === 'consume')?.items ?? [];
+const active = takeCategories.find((category) => category.id === 'do')?.items ?? [];
+const cards = [consume[0], active[0], consume[3]].filter(Boolean);
+const postExcerpt =
+  'Search looks simple from the outside: type a query, get ten blue links. Under the hood it is one of the most interesting large-scale system design problems.';
+---
+<BaseLayout title={site.title}>
+  <div class="home-page">
+    <section class="home-about-hero" aria-label={`About ${site.author}`}>
+      <div class="home-about-intro">
+        <div class="home-about-photo">
+          <img src={site.photoUrl} alt={site.author} />
+        </div>
+        <div class="home-about-copy">
+          <h1>{site.author}</h1>
+          <p class="home-about-role-line">{site.role}</p>
+          <p class="home-about-location">{site.location}</p>
+        </div>
+      </div>
+
+      <div class="home-about-text">
+        <p>
+          I build systems that connect research to product and turn model capabilities into useful,
+          measurable tools &mdash; <span class="home-azi-inline" aria-label="A to Z intelligence"><strong>A</strong> to <strong>Z</strong> <span><span>i</span>ntelligence</span></span>.
+        </p>
+      </div>
+
+      <AboutJourney />
+    </section>
+
+    <section class="home-section" aria-labelledby="home-latest-title">
+      <div class="home-section-heading">
+        <p class="home-section-label" id="home-latest-title">Latest post</p>
+        <a href="/blog">See all -></a>
+      </div>
+      <a class="home-post-card" href="/posts/system-design-of-search-engine">
+        <div class="home-post-meta">
+          <time datetime={new Date(latestPost.date).toISOString()}>{formatPostDate(latestPost.date)}</time>
+        </div>
+        <h2>{latestPost.title}</h2>
+        <p>{postExcerpt}</p>
+        <span class="home-post-read">Read latest post -></span>
+      </a>
+    </section>
+
+    <section class="home-section" aria-labelledby="home-recs-title">
+      <div class="home-section-heading">
+        <p class="home-section-label" id="home-recs-title">Takes</p>
+        <a href="/takes">See all -></a>
+      </div>
+      <div class="home-recs">
+        {cards.map((item, index) => (
+          <a class="home-rec-card" href={`/takes#${index === 1 ? 'do' : 'consume'}`}>
+            <div class="home-rec-header">
+              <span class="home-rec-type">{item.type}</span>
+              <span class={`home-rec-rating home-rec-rating--${item.rating.toLowerCase()}`}>{item.rating}</span>
+            </div>
+            <strong>{item.title}</strong>
+            <p>{item.desc}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>
