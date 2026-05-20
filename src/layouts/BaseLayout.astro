@@ -51,6 +51,7 @@ const pageTitle = title === site.title ? site.title : `${title} - ${site.title}`
         document.documentElement.dataset.theme = theme;
         document.querySelectorAll('[data-theme-toggle-img]').forEach((img) => {
           img.src = theme === 'dark' ? '/assets/img/moon.svg' : '/assets/img/sun.svg';
+          img.style.filter = theme === 'dark' ? 'invert(1)' : '';
         });
       };
       applyTheme(getStoredTheme() || getSystemTheme());

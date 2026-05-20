@@ -5,10 +5,17 @@
     margin: 2rem 0 0;
   }
 
+  .map-and-panel {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+
   /* ── MAP ── */
   .map-wrap {
     position: relative;
-    width: 100%;
+    flex: 0 0 58%;
+    width: 58%;
   }
 
   .map-wrap svg {
@@ -81,14 +88,14 @@
 
   /* ── DETAIL PANEL ── */
   .detail-panel {
-    margin-top: 1.5rem;
+    flex: 1;
     background: var(--color-bg-main);
     border-radius: 14px;
     border: 1px solid var(--color-border-light);
     padding: 1.5rem 1.75rem;
     box-shadow: none;
-    min-height: 130px;
     transition: opacity 0.25s;
+    align-self: stretch;
   }
 
   .detail-header {
@@ -236,9 +243,18 @@
   .map-label.is-active .map-label-line {
     background: #2380ED;
   }
+  @media (max-width: 700px) {
+    .map-and-panel {
+      flex-direction: column;
+    }
+    .map-wrap {
+      flex: none;
+      width: 100%;
+    }
+  }
 </style>
 <div class="about-map-v2">
-
+  <div class="map-and-panel">
   <div class="map-wrap">
     <svg viewBox="0 0 1280 643" xmlns="http://www.w3.org/2000/svg">
 
@@ -521,6 +537,7 @@ c13 -13 40 -28 61 -34z m-122 -313 c-4 -93 -33 -143 -116 -205 -150 -110 -217
 
   <!-- Detail panel -->
   <div class="detail-panel" id="detail-panel"></div>
+  </div><!-- end map-and-panel -->
 
 </div>
 
@@ -533,15 +550,15 @@ c13 -13 40 -28 61 -34z m-122 -313 c-4 -93 -33 -143 -116 -205 -150 -110 -217
       items: [
         {
           org: 'OpenAI',
-          desc: 'Building agent systems that help people solve complex tasks through reliable reasoning, tool use, and action.'
+          desc: 'Building agent systems for reliable reasoning, tool use, and action.'
         },
         {
           org: 'Amazon AGI',
-          desc: 'Worked on a reinforcement-learning framework and training environments for agents, with a focus on scalable feedback loops and efficient learning.'
+          desc: 'RL framework and training environments for agents — scalable feedback loops, efficient learning.'
         },
         {
-          org: 'Stanford Lab',
-          desc: 'Completed coursework in reinforcement learning, deep reinforcement learning, meta-learning, and machine learning on graphs.'
+          org: 'Stanford',
+          desc: 'Coursework in RL, deep RL, meta-learning, and ML on graphs.'
         }
       ]
     },
@@ -592,7 +609,6 @@ c13 -13 40 -28 61 -34z m-122 -313 c-4 -93 -33 -143 -116 -205 -150 -110 -217
       '<div class="detail-header">' +
         '<span class="detail-dot" style="background:' + d.color + '"></span>' +
         '<span class="detail-title">' + d.title + '</span>' +
-        '<span class="detail-meta">' + d.meta + '</span>' +
       '</div>' +
       '<div class="detail-body">' + itemsHtml + '</div>';
   }
