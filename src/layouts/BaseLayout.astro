@@ -50,7 +50,7 @@ const pageTitle = title === site.title ? site.title : `${title} - ${site.title}`
       const applyTheme = (theme) => {
         document.documentElement.dataset.theme = theme;
         document.querySelectorAll('[data-theme-toggle-img]').forEach((img) => {
-          img.src = theme === 'dark' ? '/assets/img/sun.svg' : '/assets/img/moon.svg';
+          img.src = theme === 'dark' ? '/assets/img/moon.svg' : '/assets/img/sun.svg';
         });
       };
       applyTheme(getStoredTheme() || getSystemTheme());
