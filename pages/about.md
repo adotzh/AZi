@@ -4,22 +4,5 @@ title: About Me
 permalink: /about-me
 content-type: static
 ---
-<div class="about-profile">
-  <div class="about-profile-photo{% if site.linkedin.photo_url == nil or site.linkedin.photo_url == empty %} about-profile-photo--placeholder{% endif %}">
-    {% if site.linkedin.photo_url and site.linkedin.photo_url != empty %}
-      <img src="{{ site.linkedin.photo_url }}" alt="Anastasia Ziboedova">
-    {% else %}
-      <span>AZi</span>
-    {% endif %}
-  </div>
-  <div>
-    <h2 class="about-profile-name">Anastasia Ziboedova</h2>
-    <p class="about-profile-role">Member of Technical Staff at OpenAI</p>
-  </div>
-</div>
-
-I build systems around intelligence: agent environments, evaluation loops, training feedback, and product surfaces that make models more useful in the real world. I like work that connects the full stack, from research-y infrastructure to the moment a person actually gets something done.
-
-AZi is my shorthand for that taste: a to z intelligence, end-to-end curiosity, and a bias toward systems that are both smart and efficient.
-
-{% include AboutJourney.html %}
+<meta http-equiv="refresh" content="0; url={{ '/' | relative_url }}">
+<p>This page has moved to <a href="{{ '/' | relative_url }}">the homepage</a>.</p>

@@ -7,35 +7,39 @@
 {% endfor %}
 
 <div class="home-page">
-    <section class="home-hero" aria-label="AZi overview">
-        <div class="azi-hero-wordmark azi-wordmark--primary" aria-label="{{ site.heading }}">
-            <span>A</span><span>Z</span><span>i</span>
-        </div>
-        <p class="home-hero-desc">
-            My corner for a to z intelligence: agents, reinforcement learning, and the craft of building things that last. Also: backpacking trails, philosophy books, and post-banya conversations.
-        </p>
-    </section>
-
-    <div class="home-cards-row">
-        <a class="home-about-card" href="{{ '/about-me' | relative_url }}">
-            <div class="home-about-avatar">
+    <section class="home-about-hero" aria-label="About Anastasia Ziboedova">
+        <div class="home-about-intro">
+            <div class="home-about-photo{% if site.linkedin.photo_url == nil or site.linkedin.photo_url == empty %} home-about-photo--placeholder{% endif %}">
                 {% if site.linkedin.photo_url and site.linkedin.photo_url != empty %}
                     <img src="{{ site.linkedin.photo_url }}" alt="Anastasia Ziboedova">
                 {% else %}
-                    <span>AZ</span>
+                    <span>AZi</span>
                 {% endif %}
             </div>
-            <div class="home-about-body">
-                <span class="home-about-name">Anastasia Ziboedova</span>
-                <span class="home-about-role">Member of Technical Staff · OpenAI</span>
-                <span class="home-about-orgs">San Francisco</span>
-                <span class="home-about-cta">Read the full story →</span>
+            <div class="home-about-copy">
+                <h1>Anastasia Ziboedova</h1>
+                <p class="home-about-role-line">Member of Technical Staff at OpenAI</p>
+                <p class="home-about-location">San Francisco</p>
             </div>
-        </a>
+        </div>
+
+        <div class="home-about-text">
+            <p>
+                I build systems that connect research to product and turn model capabilities into useful, measurable tools — <span class="home-azi-inline" aria-label="A to Z intelligence"><strong>A</strong> to <strong>Z</strong> <span><span>i</span>ntelligence</span></span>.
+            </p>
+        </div>
+
+        {% include AboutJourney.html %}
+    </section>
+
+    <section class="home-section" aria-labelledby="home-latest-title">
+        <div class="home-section-heading">
+            <p class="home-section-label" id="home-latest-title">Latest post</p>
+            <a href="{{ '/blog' | relative_url }}">See all →</a>
+        </div>
         {% if latest_post %}
             <a class="home-post-card" href="{{ latest_post.url | relative_url }}">
                 <div class="home-post-meta">
-                    <span>Latest post</span>
                     <time datetime="{{ latest_post.date | date_to_xmlschema }}">{{ latest_post.date | date: "%b %-d, %Y" }}</time>
                 </div>
                 <h2>{{ latest_post.title }}</h2>
@@ -52,12 +56,12 @@
                 <span class="home-post-read">Open blog →</span>
             </a>
         {% endif %}
-    </div>
+    </section>
 
     <section class="home-section" aria-labelledby="home-recs-title">
         <div class="home-section-heading">
             <p class="home-section-label" id="home-recs-title">Takes</p>
-            <a href="{{ '/blog' | relative_url }}">See all →</a>
+            <a href="{{ '/takes' | relative_url }}">See all →</a>
         </div>
         <div class="home-recs">
             <a class="home-rec-card" href="{{ '/takes' | relative_url }}#consume" data-rec-slot="0">
