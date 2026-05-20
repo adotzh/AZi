@@ -129,6 +129,17 @@ h3 {
 .theme-toggle img {
   height: 1.1rem;
   width: 1.1rem;
+  filter: brightness(0);
+}
+
+[data-theme="dark"] .theme-toggle img {
+  filter: invert(1);
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) .theme-toggle img {
+    filter: invert(1);
+  }
 }
 
 .home-page {
